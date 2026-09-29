@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salah Ayman Haggag — Penetration Tester</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--card:#fff;--ink:#0f1b2d;--mute:#56657a;--line:#cfd7e0;--crit:#d6332b;--high:#e57a1f;--med:#c9a100;--ok:#178a6b;--code:#0f1b2d;--codeink:#cfe3ff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1420;--card:#152033;--ink:#e8eef7;--mute:#93a3b8;--line:#263650;--code:#070c14;--codeink:#cfe3ff}}
+:root[data-theme="dark"]{--bg:#0d1420;--card:#152033;--ink:#e8eef7;--mute:#93a3b8;--line:#263650;--code:#070c14;--codeink:#cfe3ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Bricolage Grotesque",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--crit);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav .wrap{display:flex;gap:22px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap}
+nav b{font-weight:800;margin-right:auto}
+nav a{text-decoration:none;color:var(--mute);font-size:15px}
+nav a:hover{color:var(--ink)}
+.mono{font-family:"IBM Plex Mono",monospace}
+.hero{padding:56px 0 40px}
+.doc{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--crit);padding:28px clamp(18px,4vw,40px);position:relative}
+.doc .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 24px;font-size:13px;color:var(--mute);border-bottom:1px dashed var(--line);padding-bottom:16px;margin-bottom:24px}
+.doc .meta b{display:block;color:var(--ink);font-weight:500;font-size:14px}
+h1{font-size:clamp(40px,8vw,84px);line-height:.98;margin:0 0 14px;font-weight:800;letter-spacing:-.03em}
+.role{font-size:clamp(20px,3vw,28px);font-weight:600;margin:0 0 18px}
+.lead{max-width:60ch;color:var(--mute);margin:0 0 24px}
+.stamp{position:absolute;top:22px;right:22px;border:3px solid var(--crit);color:var(--crit);padding:4px 12px;font:500 13px "IBM Plex Mono",monospace;transform:rotate(6deg);animation:stamp .5s .3s both cubic-bezier(.2,1.6,.4,1)}
+@keyframes stamp{from{opacity:0;transform:rotate(-10deg) scale(2.2)}to{opacity:1;transform:rotate(6deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}html{scroll-behavior:auto}}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border:2px solid var(--ink);text-decoration:none;font-weight:600}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--crit);border-color:var(--crit);color:#fff}
+section{padding:44px 0}
+h2{font-size:clamp(28px,4vw,40px);margin:0 0 6px;letter-spacing:-.02em}
+.sub{color:var(--mute);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.find{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);padding:20px;display:flex;flex-direction:column;gap:10px}
+.find h3{margin:0;font-size:21px;line-height:1.2}
+.find p{margin:0;color:var(--mute);font-size:15.5px}
+.sev{align-self:flex-start;font:500 12px "IBM Plex Mono",monospace;color:#fff;background:var(--c);padding:3px 9px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tags span{font:400 12px "IBM Plex Mono",monospace;border:1px solid var(--line);padding:2px 8px;color:var(--mute)}
+.find a{font-weight:600;font-size:15px}
+.find dl{margin:0;font-size:14.5px}
+.find dt{font-weight:600;display:inline}
+.find dd{display:inline;margin:0;color:var(--mute)}
+.crit{--c:var(--crit)}.high{--c:var(--high)}.med{--c:var(--med)}.ok{--c:var(--ok)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.sk{background:var(--card);border:1px solid var(--line);padding:18px}
+.sk h3{margin:0 0 10px;font-size:17px}
+.sk ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.sk li{font-size:14.5px}
+.bar{height:6px;background:var(--line);margin-top:4px}
+.bar i{display:block;height:100%;background:var(--ink)}
+.term{background:var(--code);color:var(--codeink);padding:18px 20px;font:400 14px/1.7 "IBM Plex Mono",monospace;overflow-x:auto;margin-top:26px}
+.term em{color:#7fd6b0;font-style:normal}
+.term u{color:#ff8a7f;text-decoration:none}
+.timeline{border-left:3px solid var(--ink);padding-left:22px;display:grid;gap:22px}
+.timeline b{display:block}
+.timeline span{color:var(--mute);font-size:15px}
+.about{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:start}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+.about p{margin:0 0 14px;max-width:62ch}
+.facts{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--ink);padding:20px;display:grid;gap:12px;font-size:15px}
+.facts b{display:block;font-size:12px;font-family:"IBM Plex Mono",monospace;color:var(--mute);font-weight:500;text-transform:uppercase}
+.svc h3::before{content:attr(data-n);display:block;font:500 13px "IBM Plex Mono",monospace;color:var(--crit);margin-bottom:4px}
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--mute);font-size:14px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.contact a{display:block;background:var(--card);border:1px solid var(--line);padding:16px;text-decoration:none}
+.contact a:hover{border-color:var(--crit)}
+.contact small{display:block;color:var(--mute)}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>SAH.</b><a href="#about">About</a><a href="#services">Services</a><a href="#findings">Projects</a><a href="#skills">Skills</a><a href="#certs">Certifications</a><a href="#edu">Education</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="doc">
+<div class="stamp">READY TO HIRE</div>
+<div class="meta">
+<div>Subject<b>Salah Ayman Haggag</b></div>
+<div>Focus<b>Offensive security</b></div>
+<div>Status<b>4th-year CS student</b></div>
+<div>Graduation<b>2027</b></div>
+</div>
+<h1>Salah Ayman Haggag</h1>
+<p class="role">Penetration Tester</p>
+<p class="lead">Computer Science student at El Shorouk Academy (final year). I find weaknesses in web apps and networks, prove them with working exploits, and write up how to fix them. CCNA certified, practicing on Hack The Box.</p>
+<div class="btns"><a class="btn p" href="#findings">See my projects</a><a class="btn" href="#contact">Contact me</a></div>
+</div>
+<div class="term" aria-hidden="true">
+<span>$ nmap -sV -sC target.htb</span><br>
+<em>21/tcp  open  ftp     vsftpd</em> <u>(anonymous login allowed)</u><br>
+<em>25/tcp  open  smtp    Postfix</em> <u>(VRFY enabled)</u><br>
+<em>80/tcp  open  http    Apache</em> <u>(SQLi in /login)</u><br>
+<span>$ echo "found → exploited → reported → fixed"</span>
+</div>
+</div></header>
+
+<section id="about"><div class="wrap">
+<h2>About Me</h2>
+<p class="sub">Offensive security, explained clearly.</p>
+<div class="about">
+<div>
+<p>Final-year Computer Science student at El Shorouk Academy (graduating 2027), specializing in web application and network penetration testing. I find vulnerabilities, prove their impact with working exploits, and document practical fixes.</p>
+<p>CCNA and Cisco Certified Ethical Hacker certified, with hands-on practice on Hack The Box. I am seeking internship and junior penetration testing opportunities.</p>
+</div>
+<div class="facts">
+<div><b>Education</b>B.Sc. Computer Science, El Shorouk Academy</div>
+<div><b>Certifications</b>CCNA · Cisco Certified Ethical Hacker</div>
+<div><b>Languages</b>Arabic (native) · English (very good)</div>
+</div>
+</div>
+</div></section>
+
+<section id="services"><div class="wrap">
+<h2>Services</h2>
+<p class="sub">What I can do for your application or network.</p>
+<div class="grid">
+<article class="find svc high"><h3 data-n="01">Web Application Penetration Testing</h3><p>Manual and tool-assisted testing against the OWASP Top 10: SQL injection, XSS, CSRF, broken authentication, and remote code execution.</p><div class="tags"><span>Burp Suite</span><span>SQLmap</span></div></article>
+<article class="find svc high"><h3 data-n="02">Network Penetration Testing</h3><p>Host discovery, port and service enumeration, and exploitation of exposed services to show what an attacker could reach.</p><div class="tags"><span>Nmap</span><span>Metasploit</span></div></article>
+<article class="find svc med"><h3 data-n="03">Vulnerability Assessment</h3><p>Systematic identification and risk rating of weaknesses, prioritized by severity and business impact.</p><div class="tags"><span>Risk rating</span><span>Prioritization</span></div></article>
+<article class="find svc med"><h3 data-n="04">Service Configuration Review</h3><p>Audit of FTP, SFTP and SMTP setups for anonymous access, weak settings, user enumeration and open relay, with a hardening checklist.</p><div class="tags"><span>FTP</span><span>SMTP</span></div></article>
+<article class="find svc ok"><h3 data-n="05">Secure Network Design</h3><p>Segmentation with VLANs, ACLs and port security, validated by testing from the attacker's side.</p><div class="tags"><span>VLAN</span><span>ACL</span></div></article>
+<article class="find svc ok"><h3 data-n="06">Reporting and Remediation Guidance</h3><p>Clear reports with proof of concept, severity, and step-by-step fixes that developers and administrators can act on.</p><div class="tags"><span>PoC</span><span>Fix guidance</span></div></article>
+</div></div></section>
+
+<section id="findings"><div class="wrap">
+<h2>Projects</h2>
+<p class="sub">Each project is written like a real finding: what was tested, what broke, and how to fix it.</p>
+<div class="grid">
+
+<article class="find crit"><span class="sev">CRITICAL · Web</span>
+<h3>Web Application Vulnerability Lab</h3>
+<p>Tested a deliberately vulnerable web app for SQL injection, XSS, CSRF and remote code execution. Wrote a report with proof of concept and a fix for every issue.</p>
+<dl><dt>Result: </dt><dd>Authentication bypass and database dump, then patched with prepared statements and output encoding.</dd></dl>
+<div class="tags"><span>Burp Suite</span><span>SQLmap</span><span>OWASP Top 10</span></div>
+</article>
+
+<article class="find high"><span class="sev">HIGH · Network</span>
+<h3>FTP, SFTP and SMTP Misconfiguration Audit</h3>
+<p>Built a small lab and attacked its mail and file services: anonymous FTP access, weak SFTP settings, SMTP user enumeration and open relay.</p>
+<dl><dt>Result: </dt><dd>Hardening checklist for each service, verified by re-testing.</dd></dl>
+<div class="tags"><span>Nmap</span><span>Netcat</span><span>Metasploit</span></div>
+</article>
+
+<article class="find high"><span class="sev">HIGH · Practice</span>
+<h3>Hack The Box Write-ups</h3>
+<p>Step-by-step write-ups for the machines I solved: enumeration, foothold, privilege escalation, and what a defender would have done differently.</p>
+<dl><dt>Result: </dt><dd>Repeatable methodology from recon to root.</dd></dl>
+<div class="tags"><span>Hack The Box</span><span>Linux</span><span>Privilege escalation</span></div>
+</article>
+
+<article class="find med"><span class="sev">MEDIUM · Tooling</span>
+<h3>Python Port Scanner and Banner Grabber</h3>
+<p>Command-line tool that scans a host, identifies open services and grabs their banners. Supports threading and saves results to a report file.</p>
+<dl><dt>Result: </dt><dd>Faster recon, with output ready to paste into a report.</dd></dl>
+<div class="tags"><span>Python</span><span>Sockets</span><span>CLI</span></div>
+</article>
+
+<article class="find ok"><span class="sev">DEFENSE · Networking</span>
+<h3>Secure Network Design Lab</h3>
+<p>Designed a segmented network with VLANs, ACLs and port security, then tested it from the attacker's side to see which rules actually blocked traffic.</p>
+<dl><dt>Result: </dt><dd>Documented topology and tested rules, built on CCNA skills.</dd></dl>
+<div class="tags"><span>Cisco Packet Tracer</span><span>VLAN</span><span>ACL</span></div>
+</article>
+
+<article class="find med"><span class="sev">MEDIUM · Web</span>
+<h3>XSS and CSRF Demo Site</h3>
+<p>Two versions of a small web app: one vulnerable, one fixed. Shows stored XSS and CSRF attacks side by side with the fix (CSP, CSRF tokens, escaping).</p>
+<dl><dt>Result: </dt><dd>A live demo anyone can try to break.</dd></dl>
+<div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+</article>
+
+</div></div></section>
+
+<section id="skills"><div class="wrap">
+<h2>Skills</h2>
+<p class="sub">What I use to find and prove vulnerabilities.</p>
+<div class="skills">
+<div class="sk"><h3>Exploits and vulnerabilities</h3><ul>
+<li>SQL Injection<div class="bar"><i style="width:80%"></i></div></li>
+<li>XSS and CSRF<div class="bar"><i style="width:80%"></i></div></li>
+<li>Remote code execution<div class="bar"><i style="width:65%"></i></div></li>
+<li>FTP/SFTP and SMTP attacks<div class="bar"><i style="width:70%"></i></div></li></ul></div>
+<div class="sk"><h3>Networking</h3><ul>
+<li>Protocols (TCP/IP, DNS, HTTP, SMTP, FTP)<div class="bar"><i style="width:85%"></i></div></li>
+<li>Routing and switching (CCNA)<div class="bar"><i style="width:80%"></i></div></li>
+<li>Network scanning and recon<div class="bar"><i style="width:75%"></i></div></li></ul></div>
+<div class="sk"><h3>Tools and systems</h3><ul>
+<li>Linux command line<div class="bar"><i style="width:70%"></i></div></li>
+<li>Burp Suite, Nmap, SQLmap, Metasploit<div class="bar"><i style="width:65%"></i></div></li>
+<li>Python scripting<div class="bar"><i style="width:55%"></i></div></li></ul></div>
+<div class="sk"><h3>Web and soft skills</h3><ul>
+<li>HTML, CSS, JavaScript<div class="bar"><i style="width:75%"></i></div></li>
+<li>Problem solving and analytical thinking</li>
+<li>Report writing</li>
+<li>English (very good)</li></ul></div>
+</div></div></section>
+
+<section id="certs"><div class="wrap">
+<h2>Certifications</h2>
+<p class="sub">Verified training and hands-on practice.</p>
+<div class="grid">
+<div class="find ok"><h3>CCNA</h3><p>Cisco Certified Network Associate</p></div>
+<div class="find ok"><h3>Cisco Certified Ethical Hacker</h3><p>Ethical hacking methodology and tools</p></div>
+<div class="find ok"><h3>Hack The Box</h3><p>Multiple practical machines solved</p></div>
+</div></div></section>
+
+<section id="edu"><div class="wrap">
+<h2>Education</h2>
+<div class="timeline" style="margin-top:22px">
+<div><b>Bachelor of Computer Science</b><span>El Shorouk Academy · Final year · GPA 3.0 · Graduating 2027</span></div>
+<div><b>Ongoing self-training</b><span>Hack The Box, online labs, and building my own security tools</span></div>
+</div></div></section>
+
+<section id="contact"><div class="wrap">
+<h2>Contact</h2>
+<p class="sub">Open to internships, junior pentest roles and security projects.</p>
+<div class="contact">
+<a href="mailto:moamenayman122@gmail.com"><small>Email</small>moamenayman122@gmail.com</a>
+<a href="https://www.linkedin.com/in/salah-ayman-0a69b6306/" target="_blank" rel="noopener noreferrer"><small>LinkedIn</small>linkedin.com/in/salah-ayman-0a69b6306</a>
+<a href="tel:+201024919628"><small>Phone</small>01024919628</a>
+</div></div></section>
+
+<footer><div class="wrap">© 2026 Salah Ayman Haggag</div></footer>
+</body>
+</html>
